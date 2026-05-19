@@ -42,6 +42,8 @@ spec:
           value: "probe"
         - name: CLUSTER_LABEL
           value: "my-cluster"
+        - name: ROLLOUT_LABEL
+          value: "v0"
         - name: EXTRA_LATENCY_MS
           value: "0"
         - name: FAIL_LIVENESS_AFTER_N_REQUESTS
