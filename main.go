@@ -35,6 +35,7 @@ type Config struct {
 	Port                int
 	Prefix              string
 	ClusterLabel        string
+	RolloutLabel        string
 	PodName             string
 	Namespace           string
 	NodeName            string
@@ -51,6 +52,7 @@ func loadConfig() Config {
 		Port:                getEnvInt("PORT", 8080),
 		Prefix:              getEnv("PREFIX", "dummy"),
 		ClusterLabel:        getEnv("CLUSTER_LABEL", "unknown"),
+		RolloutLabel:        getEnv("ROLLOUT_LABEL", "v0"),
 		PodName:             getEnv("POD_NAME", "unknown"),
 		Namespace:           getEnv("NAMESPACE", "unknown"),
 		NodeName:            getEnv("NODE_NAME", "unknown"),
@@ -184,8 +186,9 @@ type InfoResponse struct {
 	PodName     string `json:"pod_name"`
 	Namespace   string `json:"namespace"`
 	NodeName    string `json:"node_name"`
-	ClusterName string `json:"cluster_name"`
-	Version     string `json:"version"`
+	ClusterName  string `json:"cluster_name"`
+	RolloutLabel string `json:"rollout_label"`
+	Version      string `json:"version"`
 	GitCommit   string `json:"git_commit"`
 	Environment string `json:"environment"`
 	InstanceID  string `json:"instance_id"`
@@ -205,8 +208,9 @@ func infoHandler(cfg Config) http.HandlerFunc {
 			PodName:     cfg.PodName,
 			Namespace:   cfg.Namespace,
 			NodeName:    cfg.NodeName,
-			ClusterName: cfg.ClusterLabel,
-			Version:     Version,
+			ClusterName:  cfg.ClusterLabel,
+			RolloutLabel: cfg.RolloutLabel,
+			Version:      Version,
 			GitCommit:   GitCommit,
 			Environment: getEnv("ENVIRONMENT", "development"),
 			InstanceID:  instanceID,

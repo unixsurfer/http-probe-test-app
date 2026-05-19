@@ -27,6 +27,7 @@ artificial latency, configurable failure modes, and Prometheus metrics.
 | `PORT` | `8080` | HTTP listen port. |
 | `PREFIX` | `dummy` | Metrics prefix (e.g. `probe_test_requests_total`). |
 | `CLUSTER_LABEL` | `unknown` | Exported as a metrics label and returned by `/info`. |
+| `ROLLOUT_LABEL` | `v0` | Arbitrary rollout identifier returned by `/info` as `rollout_label`. Useful for tracking active rollout stages without modifying the container image. |
 | `POD_NAME` | `unknown` | Metrics label + `/info`. |
 | `NAMESPACE` | `unknown` | `/info`. |
 | `NODE_NAME` | `unknown` | Metrics label + `/info`. |
