@@ -38,7 +38,7 @@ GO_GOSUMDB ?= sum.golang.org
 GO_BIN ?= $(if $(GOROOT),$(GOROOT)/bin/go,go)
 GO ?= env GOWORK=$(GOWORK) GOPROXY=$(GO_GOPROXY) GOSUMDB=$(GO_GOSUMDB) $(GO_BIN)
 
-GO_IMAGE ?= golang:1.25.9-trixie
+GO_IMAGE ?= golang:1.25.10-trixie
 
 REPORT_LINT ?= $(OUT_DIR)/report-lint.json
 REPORT_VULN ?= $(OUT_DIR)/report-vuln.text
