@@ -148,7 +148,7 @@ func TestInfoHandler(t *testing.T) {
 	resetGlobalState()
 	Version = "1.2.3"
 	GitCommit = "abc1234"
-	cfg := Config{PodName: "test-pod", ClusterLabel: "test-cluster"}
+	cfg := Config{PodName: "test-pod", ClusterLabel: "test-cluster", RolloutLabel: "v1"}
 	handler := infoHandler(cfg)
 
 	req := httptest.NewRequest("GET", "/info", nil)
@@ -166,6 +166,9 @@ func TestInfoHandler(t *testing.T) {
 
 	if resp.Version != "1.2.3" || resp.GitCommit != "abc1234" || resp.PodName != "test-pod" {
 		t.Errorf("unexpected info response content: %+v", resp)
+	}
+	if resp.RolloutLabel != "v1" {
+		t.Errorf("unexpected rollout_label: got %q want %q", resp.RolloutLabel, "v1")
 	}
 }
 
@@ -249,3 +252,5 @@ func TestGracefulShutdown(t *testing.T) {
 		t.Error("expected connection error after shutdown")
 	}
 }
+
+
