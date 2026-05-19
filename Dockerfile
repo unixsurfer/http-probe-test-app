@@ -1,5 +1,5 @@
 # Build stage
-ARG GO_IMAGE=golang:1.25.9-trixie
+ARG GO_IMAGE=golang:1.25.10-trixie
 FROM ${GO_IMAGE} AS builder
 
 WORKDIR /app
